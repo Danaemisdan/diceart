@@ -13,8 +13,12 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Dice Art Films | Visual Storytelling",
-  description: "A premium production house crafting visual masterpieces.",
+  title: "Dice Art Films | Production • VFX • Events",
+  description: "A cinematic film production, VFX, and events company.",
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
 };
 
 export default function RootLayout({
