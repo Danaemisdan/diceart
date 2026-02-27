@@ -31,19 +31,7 @@ export default function Navigation() {
             <div className="h-8 w-40 relative">
                 <img src="/IMG_2726.PNG" alt="Dice Art Films" className="object-contain w-full h-full object-left" />
             </div>
-            <ul className="hidden md:flex gap-12 list-none">
-                {["Home", "Work", "About", "Contact"].map((item) => (
-                    <li key={item}>
-                        <Link
-                            href={`#${item.toLowerCase()}`}
-                            className="relative text-sm uppercase tracking-widest text-white hover:text-gray-300 transition-colors group"
-                        >
-                            {item}
-                            <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+
         </motion.nav>
     );
 }
