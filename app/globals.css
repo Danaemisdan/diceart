@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+  --accent: #E63946;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-outfit), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Utilities */
+.text-gradient {
+  background: linear-gradient(to right, #fff, #888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 
+  FORCE HIDE NEXT.JS DEV TOOLS OVERLAY 
+  User requested this be removed manually from frontend.
+*/
+nextjs-portal,
+[data-nextjs-dev-overlay] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
