@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
+  --background: #000000;
   --foreground: #ffffff;
   --accent: #E63946;
 }
@@ -9,20 +9,39 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-outfit), sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: -0.04em;
+  /* Tight letter spacing like Apple */
+}
+
+img,
+video {
+  border: none !important;
+  outline: none !important;
 }
 
 /* Custom Utilities */
 .text-gradient {
-  background: linear-gradient(to right, #fff, #888);
+  background: linear-gradient(to right, #ffffff, #888888);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 /* 
   FORCE HIDE NEXT.JS DEV TOOLS OVERLAY 
-  User requested this be removed manually from frontend.
 */
 nextjs-portal,
 [data-nextjs-dev-overlay] {
@@ -30,4 +49,48 @@ nextjs-portal,
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+@keyframes gradientFlowUp {
+  0% {
+    background-position: 50% 100%;
+  }
+
+  100% {
+    background-position: 50% -100%;
+  }
+}
+
+@keyframes fast-gradient-slide {
+  from {
+    background-position: 0 0, 0 center;
+  }
+
+  to {
+    background-position: 0 0, 200% center;
+  }
+}
+
+.sexy-noisy-text {
+  /* Noisy SVG overlay combined with vibrant left-to-right gradient */
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E"),
+    linear-gradient(90deg, #ff0000, #ff6600, #eab308, #ffffff, #eab308, #ff6600, #ff0000);
+  background-size: 150px 150px, 200% auto;
+  background-blend-mode: color-dodge;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fast-gradient-slide 1.5s linear infinite;
+}
+
+@keyframes gradientFlowRight {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
 }
