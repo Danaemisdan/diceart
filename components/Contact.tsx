@@ -9,13 +9,18 @@ export default function Contact() {
             id="contact"
             className="relative bg-black overflow-hidden py-24 md:py-32 w-full min-h-[500px] flex flex-col justify-center"
         >
-            {/* The Footer Image Background - Cropped for Mobile */}
+            {/* The Footer Image Background - Responsive */}
             <div className="absolute inset-0 w-full h-full z-0 opacity-40">
-                <img
-                    src="/CinematicFooter.svg"
-                    alt="Dice Art Films Footer"
-                    className="w-full h-full object-cover object-[85%_center] md:object-center"
-                />
+                <picture>
+                    {/* Desktop wide version */}
+                    <source srcSet="/CinematicFooter.svg" media="(min-width: 768px)" />
+                    {/* Mobile tall version */}
+                    <img
+                        src="/CinematicFooterMobile.svg"
+                        alt="Dice Art Films Footer"
+                        className="w-full h-full object-cover object-center"
+                    />
+                </picture>
             </div>
             {/* Top border & fade overlay */}
             <div className="absolute top-0 left-0 right-0 h-[1px] z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
