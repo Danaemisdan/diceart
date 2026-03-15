@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
-const STENCIL_H = "32vw"; // Reduced to prevent cutoff
+// Stencil dimensions handled automatically now
 
 // ─── Scroll indicator ──────────────────────────────────────────────────────────
 function ScrollIndicator() {
@@ -67,9 +67,9 @@ export default function Hero() {
                 className="absolute inset-0 flex items-center justify-center z-10 bg-black"
             >
                 <motion.div
-                    initial={{ opacity: 1, scale: 0.9, filter: "blur(10px)" }}
+                    initial={{ opacity: 0, scale: 0.85, filter: "blur(20px)" }}
                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    transition={{ duration: 2.0, ease: "easeOut" }}
                     style={{ scale: containerScale }}
                     className="relative w-full flex flex-col items-center justify-center pb-8"
                 >
@@ -91,8 +91,8 @@ export default function Hero() {
 
                     {/* Stencil Container */}
                     <div
-                        className="relative w-full flex items-center justify-center"
-                        style={{ height: STENCIL_H }}
+                        className="relative flex items-center justify-center w-[90vw] md:w-[70vw] lg:w-[60vw]"
+                        style={{ aspectRatio: "4752 / 1792" }}
                     >
                         {/* The Video (Behind) */}
                         <video

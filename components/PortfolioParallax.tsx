@@ -57,12 +57,8 @@ export default function PortfolioParallax() {
             {/* Spacer to let the 50+ text sit alone for a screen scroll before images arrive */}
             <div className="w-full h-[80vh] pointer-events-none" />
 
-            {/* Natively scrolling grid over the sticky background */}
-            <div className="relative z-10 w-full max-w-[100vw] mx-auto pointer-events-none pb-32">
-                {/* 
-                  Container for absolute positioned items. 
-                  Height must exactly fit the max gridY (340vh) + typical image height (40vh) + padding (70vh) = 450vh approx.
-                */}
+            {/* Natively scrolling grid over the sticky background - Desktop */}
+            <div className="hidden md:block relative z-10 w-full max-w-[100vw] mx-auto pointer-events-none pb-32">
                 <div className="relative w-full h-[450vh] pointer-events-auto">
                     {parsedProjects.map((project, index) => (
                         <AnimatedTile
@@ -70,6 +66,15 @@ export default function PortfolioParallax() {
                             project={project}
                             index={index}
                         />
+                    ))}
+                </div>
+            </div>
+
+            {/* Native CSS Grid - Mobile */}
+            <div className="md:hidden relative z-10 w-full px-4 pb-32 pointer-events-auto">
+                <div className="grid grid-cols-2 gap-4 w-full">
+                    {parsedProjects.map((project, index) => (
+                        <MobileTile key={project.id} project={project} index={index} />
                     ))}
                 </div>
             </div>
@@ -135,6 +140,32 @@ function AnimatedTile({ project, index }: any) {
                     <p className="text-[10px] text-white font-medium drop-shadow-md">{project.title}</p>
                 </div>
             </motion.div>
+        </motion.div>
+    );
+}
+
+function MobileTile({ project, index }: any) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "100px" }}
+            transition={{ duration: 0.5, delay: (index % 2) * 0.1 }}
+            className="shadow-2xl rounded-lg overflow-hidden w-full relative group"
+        >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+                src={project.img}
+                alt={project.title}
+                loading="lazy"
+                className="w-full aspect-[2/3] object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
+
+            <div className="absolute bottom-2 left-3 right-3 z-10">
+                <p className="text-[8px] tracking-[0.2em] text-white/70 uppercase font-bold mb-0.5">{project.category}</p>
+                <p className="text-xs text-white font-medium drop-shadow-lg leading-tight line-clamp-2">{project.title}</p>
+            </div>
         </motion.div>
     );
 }
