@@ -91,7 +91,7 @@ export default function Hero() {
 
                     {/* Stencil Container */}
                     <div
-                        className="relative flex items-center justify-center w-[95vw] md:w-[70vw] lg:w-[60vw] overflow-hidden rounded-lg"
+                        className="relative flex items-center justify-center w-[95vw] md:w-[70vw] lg:w-[60vw]"
                         style={{ aspectRatio: "4752 / 1792" }}
                     >
                         {/* The Video (Behind) */}
@@ -101,7 +101,7 @@ export default function Hero() {
                             loop
                             muted
                             playsInline
-                            className="absolute inset-0 w-full h-full object-cover scale-[1.35] md:scale-[1.15] object-center rounded-lg z-0"
+                            className="absolute inset-0 w-full h-full object-cover rounded-lg z-0"
                         />
 
                         {/* The Stencil (Overlay) */}

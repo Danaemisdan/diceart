@@ -9,15 +9,16 @@ import Contact from "@/components/Contact";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
-  const [splashState, setSplashState] = useState<"video" | "black" | "done">("video");
+  const [splashState, setSplashState] = useState<"enter" | "video" | "black" | "done">("enter");
 
   // Fallback timeout in case video fails to play or load
   useEffect(() => {
+    if (splashState !== "video") return;
     const timer = setTimeout(() => {
       setSplashState("done");
     }, 12000); // 12 seconds
     return () => clearTimeout(timer);
-  }, []);
+  }, [splashState]);
 
   const handleVideoEnd = () => {
     setSplashState("black");
@@ -26,21 +27,40 @@ export default function Home() {
     }, 1200); // Wait 1.2s for video to fade to black before showing main
   };
 
+  const handleEnter = () => {
+    setSplashState("video");
+  };
+
   return (
     <>
       <AnimatePresence>
-        {splashState !== "done" && (
+        {splashState === "enter" && (
           <motion.div
-            key="splash"
+            key="enter"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black cursor-pointer"
+            onClick={handleEnter}
+          >
+            <p className="text-white/50 tracking-[0.5em] uppercase text-sm animate-pulse">
+              Tap to Enter
+            </p>
+          </motion.div>
+        )}
+
+        {(splashState === "video" || splashState === "black") && (
+          <motion.div
+            key="splash"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black"
+            className="fixed inset-0 z-[90] flex items-center justify-center bg-black"
           >
             <motion.video
               src="/lklkl.mp4"
               autoPlay
-              muted
               playsInline
               initial={{ opacity: 1 }}
                animate={{ opacity: splashState === "video" ? 1 : 0 }}
