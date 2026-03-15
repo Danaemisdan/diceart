@@ -7,12 +7,21 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="relative bg-black overflow-hidden py-24 md:py-32"
+            className="relative bg-black overflow-hidden py-24 md:py-32 w-full min-h-[500px] flex flex-col justify-center"
         >
-            {/* Top border */}
-            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+            {/* The Footer Image Background - Cropped for Mobile */}
+            <div className="absolute inset-0 w-full h-full z-0 opacity-40">
+                <img
+                    src="/CinematicFooter.svg"
+                    alt="Dice Art Films Footer"
+                    className="w-full h-full object-cover object-[85%_center] md:object-center"
+                />
+            </div>
+            {/* Top border & fade overlay */}
+            <div className="absolute top-0 left-0 right-0 h-[1px] z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-0" />
 
-            <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
+            <div className="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center mt-12">
                 <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -28,7 +37,7 @@ export default function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.1 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-10 tracking-tighter uppercase"
+                    className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-10 tracking-tighter uppercase drop-shadow-2xl"
                 >
                     Get in touch
                     <br />
@@ -45,12 +54,12 @@ export default function Contact() {
                     {/* Sleek Contact Button instead of email */}
                     <a
                         href="mailto:diceartfilms@gmail.com"
-                        className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-300 bg-white/5 border border-white/20 rounded hover:bg-white hover:text-black tracking-widest uppercase text-sm"
+                        className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-300 bg-white/5 border border-white/20 rounded hover:bg-white hover:text-black tracking-widest uppercase text-sm backdrop-blur-sm shadow-xl"
                     >
                         <span>Contact Us</span>
                     </a>
 
-                    <div className="flex flex-col items-center gap-6 mt-8 w-full">
+                    <div className="flex flex-col items-center gap-6 mt-8 w-full backdrop-blur-md bg-black/20 p-6 rounded-2xl border border-white/5">
                         <p className="text-sm md:text-base uppercase tracking-[0.5em] text-white/50 font-medium">Follow us</p>
                         <SocialLinks />
                     </div>

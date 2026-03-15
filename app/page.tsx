@@ -46,7 +46,7 @@ export default function Home() {
                animate={{ opacity: splashState === "video" ? 1 : 0 }}
               transition={{ duration: 1.2, ease: "easeInOut" }}
               onEnded={handleVideoEnd}
-              className="w-full h-full object-cover object-[65%_center] md:object-center"
+              className="w-full h-full object-cover object-[80%_center] md:object-center"
             />
           </motion.div>
         )}
