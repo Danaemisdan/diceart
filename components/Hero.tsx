@@ -91,7 +91,7 @@ export default function Hero() {
 
                     {/* Stencil Container */}
                     <div
-                        className="relative flex items-center justify-center w-[95vw] md:w-[70vw] lg:w-[60vw]"
+                        className="relative flex items-center justify-center w-[95vw] md:w-[70vw] lg:w-[60vw] overflow-hidden rounded-lg"
                         style={{ aspectRatio: "4752 / 1792" }}
                     >
                         {/* The Video (Behind) */}

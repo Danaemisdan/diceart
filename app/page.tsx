@@ -40,6 +40,7 @@ export default function Home() {
             <motion.video
               src="/lklkl.mp4"
               autoPlay
+              muted
               playsInline
               initial={{ opacity: 1 }}
                animate={{ opacity: splashState === "video" ? 1 : 0 }}
