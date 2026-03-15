@@ -101,7 +101,7 @@ export default function Hero() {
                             loop
                             muted
                             playsInline
-                            className="absolute inset-0 w-full h-full object-cover rounded-lg z-0"
+                            className="absolute inset-0 w-full h-full object-cover scale-[1.35] md:scale-[1.15] object-center rounded-lg z-0"
                         />
 
                         {/* The Stencil (Overlay) */}
